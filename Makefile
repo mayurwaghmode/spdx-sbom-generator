@@ -31,6 +31,12 @@ build: mod
 	@echo "Building spdx-sbom-generator for Linux Intel/AMD 64-bit version:$(VERSION)"
 	@GO111MODULE=on GOFLAGS=-mod=vendor GOOS=linux go build -ldflags $(ldflags) -o bin/spdx-sbom-generator cmd/generator/generator.go
 	@chmod +x bin/spdx-sbom-generator
+	
+.PHONY: build-ppc64le
+build: mod
+	@echo "Building spdx-sbom-generator for Linux ppc64le version:$(VERSION)"
+	@GO111MODULE=on GOFLAGS=-mod=vendor GOOS=linux GOARCH=ppc64le go build -ldflags $(ldflags) -o bin/spdx-sbom-generator cmd/generator/generator.go
+	@chmod +x bin/spdx-sbom-generator
 
 .PHONY: build-mac
 build-mac: mod
